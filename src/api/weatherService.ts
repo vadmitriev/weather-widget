@@ -1,13 +1,13 @@
-import api from "./http";
-import { WeatherResponse, Coord } from "@/interfaces";
-import { AxiosResponse } from "axios";
+import { WeatherResponse, Coord } from '@/interfaces';
+import { AxiosResponse } from 'axios';
+import api from './http';
 
 const appId = process.env.VUE_APP_WEATHER_API_KEY;
-const units = "metric";
+const units = 'metric';
 
 export default class WeatherService {
   static async getWeatherByCoords(coord: Coord): Promise<AxiosResponse<WeatherResponse>> {
-    return api.get("/weather", {
+    return api.get('/weather', {
       params: {
         lat: coord.lat,
         lon: coord.lon,
@@ -18,7 +18,7 @@ export default class WeatherService {
   }
 
   static async getWeatherByCityName(city: string): Promise<AxiosResponse<WeatherResponse>> {
-    return api.get("/weather", {
+    return api.get('/weather', {
       params: {
         q: city,
         appId,

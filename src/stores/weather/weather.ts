@@ -1,10 +1,10 @@
-import { isFullfilled, isTypeOf } from "@/helpers";
-import { WeatherService } from "@/api";
-import { AxiosError, AxiosResponse } from "axios";
-import { LS_WEATHER_STATE } from "@/constants";
-import { City, WeatherResponseError, Coord } from "@/interfaces";
-import { defineStore } from "pinia";
-import { fillCityData } from "./helpers";
+import { isFullfilled, isTypeOf } from '@/helpers';
+import { WeatherService } from '@/api';
+import { AxiosError, AxiosResponse } from 'axios';
+import { LS_WEATHER_STATE } from '@/constants';
+import { City, WeatherResponseError, Coord } from '@/interfaces';
+import { defineStore } from 'pinia';
+import { fillCityData } from './helpers';
 
 export interface WeatherState {
   cities: City[];
@@ -16,7 +16,7 @@ export interface WeatherState {
 const location = navigator.geolocation;
 
 export const useWeatherStore = defineStore({
-  id: "weather",
+  id: 'weather',
   persist: {
     storage: localStorage,
     paths: [LS_WEATHER_STATE],
@@ -35,7 +35,7 @@ export const useWeatherStore = defineStore({
       const isCityExists = this.cities.find((c) => c.id === city.id);
       if (isCityExists) {
         this.error = `City ${city.name} has already been added to the list`;
-        return this.error;
+        return;
       }
       this.cities.push(city);
     },
@@ -51,41 +51,37 @@ export const useWeatherStore = defineStore({
     setIsSettingsOpen(value: boolean) {
       this.isSettingsOpen = value;
     },
-    async loadWeatherForOneCity<T extends "coords" | "cityName">(
-      payload: T extends "coords" ? Coord : City
+    async loadWeatherForOneCity<T extends 'coords' | 'cityName'>(
+      payload: T extends 'coords' ? Coord : City,
     ): Promise<City | undefined> {
       try {
         this.isLoading = true;
         let res: AxiosResponse;
-        if (isTypeOf<Coord>(payload, "lat")) {
+        if (isTypeOf<Coord>(payload, 'lat')) {
           res = await WeatherService.getWeatherByCoords(payload);
         } else {
           res = await WeatherService.getWeatherByCityName(payload.name);
         }
 
-        if (isTypeOf<WeatherResponseError>(res.data, "message")) {
+        if (isTypeOf<WeatherResponseError>(res.data, 'message')) {
           this.error = res.data.message;
           throw new Error(this.error);
         }
         return fillCityData(res.data);
       } catch (e: unknown) {
         if (e instanceof AxiosError) {
-          this.error = e.response?.statusText || "Some error occured";
+          this.error = e.response?.statusText || 'Some error occured';
           throw new Error(this.error);
         }
       } finally {
         this.isLoading = false;
       }
+      return undefined;
     },
     async loadWeatherForAllCities() {
       const citiesResponse = await Promise.allSettled(
-        this.cities.map(async (city) => await this.loadWeatherForOneCity<"cityName">(city))
-      ).then((data) =>
-        data
-          .filter(isFullfilled)
-          .filter((c) => c.value !== undefined)
-          .map((c) => c.value)
-      );
+        this.cities.map(async (city) => this.loadWeatherForOneCity<'cityName'>(city)),
+      ).then((data) => data.filter(isFullfilled).map((c) => c.value));
 
       this.setCities(citiesResponse as City[]);
     },
@@ -96,7 +92,7 @@ export const useWeatherStore = defineStore({
           lon: pos.coords.longitude,
         };
 
-        const city = await this.loadWeatherForOneCity<"coords">(coords);
+        const city = await this.loadWeatherForOneCity<'coords'>(coords);
         if (city) {
           this.addCity(city);
         }

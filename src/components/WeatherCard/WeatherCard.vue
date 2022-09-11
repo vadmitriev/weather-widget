@@ -1,11 +1,11 @@
-<template></template>
+<template><div></div></template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import { City } from "@/interfaces";
+import { defineComponent, PropType } from 'vue';
+import { City } from '@/interfaces';
 
 export default defineComponent({
-  name: "weather-card",
+  name: 'weather-card',
   props: {
     city: {
       type: Object as PropType<City>,

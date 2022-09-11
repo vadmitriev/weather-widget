@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export interface Coord {
   lon: number;
   lat: number;
@@ -32,13 +33,13 @@ export interface Clouds {
 }
 
 export interface Rain {
-  "rain.1h": number;
-  "rain.3h": number;
+  'rain.1h': number;
+  'rain.3h': number;
 }
 
 export interface Snow {
-  "snow.1h": number;
-  "snow.3h": number;
+  'snow.1h': number;
+  'snow.3h': number;
 }
 
 export interface WeatherSys {

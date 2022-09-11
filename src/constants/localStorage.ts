@@ -1,1 +1,1 @@
-export const LS_WEATHER_STATE = "weather-state";
+export const LS_WEATHER_STATE = 'weather-state';
