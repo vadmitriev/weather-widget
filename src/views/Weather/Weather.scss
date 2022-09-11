@@ -1,0 +1,28 @@
+.weather-wrapper {
+	min-height: 200px;
+	padding: 20px;
+
+	.empty {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.title {
+			text-align: center;
+			font-size: 25px;
+			font-weight: bold;
+
+			margin-bottom: 40px;
+		}
+
+		.add-city {
+			margin-top: auto;
+
+			display: flex;
+			justify-content: center;
+			gap: 5px;
+		}
+	}
+
+}

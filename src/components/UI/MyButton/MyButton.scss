@@ -1,0 +1,17 @@
+$main-color: #409EFF;
+$backgound-color: #ECF5FF;
+
+.btn {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+
+	font-size: 25px;
+	border-radius: 50%;
+	padding: 5px;
+
+	&:hover {
+		background-color: $backgound-color;
+		color: $main-color;
+	}
+}

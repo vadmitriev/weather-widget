@@ -1,12 +1,15 @@
 import { createApp, defineCustomElement } from 'vue';
-
+import components from '@/components/UI';
 import { createPinia } from 'pinia';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-import WeatherWidget from './WeatherWidget.ce.vue';
+import { WeatherWidget } from './widgets';
 
-const App = defineCustomElement(WeatherWidget);
+// const App = defineCustomElement(WeatherWidget);
 
 const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
 
-createApp(App).use(pinia).mount('#app');
+const app = createApp(WeatherWidget);
+
+components.forEach((component) => app.component(component.name, component));
+
+app.use(pinia).mount('#app');
+// customElements.define('weather-widget', App);

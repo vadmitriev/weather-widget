@@ -1,4 +1,6 @@
-import { isFullfilled, isTypeOf } from '@/helpers';
+import {
+  getFromLocalStorage, isFullfilled, isTypeOf,
+} from '@/helpers';
 import { WeatherService } from '@/api';
 import { AxiosError, AxiosResponse } from 'axios';
 import { LS_WEATHER_STATE } from '@/constants';
@@ -15,17 +17,15 @@ export interface WeatherState {
 
 const location = navigator.geolocation;
 
+const savedState = getFromLocalStorage(LS_WEATHER_STATE);
+
 export const useWeatherStore = defineStore({
   id: 'weather',
-  persist: {
-    storage: localStorage,
-    paths: [LS_WEATHER_STATE],
-  },
   state: (): WeatherState => ({
-    cities: [],
+    cities: savedState?.cities ?? [],
     isLoading: false,
     error: null,
-    isSettingsOpen: false,
+    isSettingsOpen: savedState?.isSettingsOpen ?? false,
   }),
   actions: {
     setCities(cities: City[]) {
@@ -48,11 +48,18 @@ export const useWeatherStore = defineStore({
     setError(error: string | null) {
       this.error = error;
     },
+    resetError() {
+      this.error = null;
+    },
     setIsSettingsOpen(value: boolean) {
       this.isSettingsOpen = value;
     },
+    toggleSettings() {
+      console.log('current visible', this.isSettingsOpen);
+      this.isSettingsOpen = !this.isSettingsOpen;
+    },
     async loadWeatherForOneCity<T extends 'coords' | 'cityName'>(
-      payload: T extends 'coords' ? Coord : City,
+      payload: T extends 'coords' ? Coord : string,
     ): Promise<City | undefined> {
       try {
         this.isLoading = true;
@@ -60,13 +67,14 @@ export const useWeatherStore = defineStore({
         if (isTypeOf<Coord>(payload, 'lat')) {
           res = await WeatherService.getWeatherByCoords(payload);
         } else {
-          res = await WeatherService.getWeatherByCityName(payload.name);
+          res = await WeatherService.getWeatherByCityName(payload);
         }
 
         if (isTypeOf<WeatherResponseError>(res.data, 'message')) {
           this.error = res.data.message;
           throw new Error(this.error);
         }
+        this.resetError();
         return fillCityData(res.data);
       } catch (e: unknown) {
         if (e instanceof AxiosError) {
@@ -80,7 +88,7 @@ export const useWeatherStore = defineStore({
     },
     async loadWeatherForAllCities() {
       const citiesResponse = await Promise.allSettled(
-        this.cities.map(async (city) => this.loadWeatherForOneCity<'cityName'>(city)),
+        this.cities.map(async (city) => this.loadWeatherForOneCity<'cityName'>(city.name)),
       ).then((data) => data.filter(isFullfilled).map((c) => c.value));
 
       this.setCities(citiesResponse as City[]);

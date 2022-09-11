@@ -1,0 +1,13 @@
+.wrapper {
+
+	.add-city {
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+
+		input {
+			width: 100%;
+			padding: 10px;
+		}
+	}
+}

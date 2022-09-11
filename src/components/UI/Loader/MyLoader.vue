@@ -11,7 +11,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'loader-component',
+  name: 'my-loader',
   props: {
     visible: {
       type: Boolean,
@@ -21,6 +21,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import "./Loader.scss";
 </style>

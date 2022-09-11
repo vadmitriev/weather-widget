@@ -1,4 +1,8 @@
-<template><div></div></template>
+<template>
+  <div class="city-wrapper">
+    {{city.name}}
+  </div>
+</template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
@@ -15,6 +19,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import "./WeatherCard.scss";
 </style>
