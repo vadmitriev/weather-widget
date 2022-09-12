@@ -3,7 +3,7 @@
 		class="my-button"
 		:class="{
       small : size === 's',
-      middle: size=== 'm',
+      middle: size === 'm',
       large: size === 'l'
     }">
 		<slot></slot>

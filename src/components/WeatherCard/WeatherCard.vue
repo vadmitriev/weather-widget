@@ -44,7 +44,10 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { City } from '@/interfaces';
-import { DashboardOutlined as IconPressure, SendOutlined as IconArrow } from '@ant-design/icons-vue';
+import {
+  DashboardOutlined as IconPressure,
+  SendOutlined as IconArrow,
+} from '@ant-design/icons-vue';
 
 export default defineComponent({
   name: 'weather-card',

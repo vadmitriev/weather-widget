@@ -42,18 +42,18 @@ export default defineComponent({
     return { input, store };
   },
   methods: {
-    async handleAdd() {
-      await this.store.addCity(this.inputValue);
-      this.showError = true;
-      this.inputValue = '';
-      (this.$refs.input as HTMLInputElement).value = '';
-    },
     focusInput() {
       (this.$refs.input as HTMLInputElement).focus();
     },
     handleInput(event: Event) {
       this.showError = false;
       this.inputValue = (event.target as HTMLInputElement).value;
+    },
+    async handleAdd() {
+      await this.store.addCity(this.inputValue);
+      this.showError = true;
+      this.inputValue = '';
+      (this.$refs.input as HTMLInputElement).value = '';
     },
   },
   mounted() {

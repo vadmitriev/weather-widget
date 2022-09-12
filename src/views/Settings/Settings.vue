@@ -1,21 +1,22 @@
 <template>
-  <div class="settings">
-    <div class="header">
+  <div class="settings-view">
+    <div class="settings-view__header">
       Settings
     </div>
     <draggable
       :list="cities"
       item-key="id"
-      class="list"
+      class="settings-view__list"
       ghost-class="ghost"
+      handle=".settings-view__list_item_menu"
     >
       <template #item="{ element }">
-        <li class="list-item">
-          <div class="left">
-            <div class="menu">
+        <li class="settings-view__list_item">
+          <div class="settings-view__list_item__left">
+            <div class="settings-view__list_item_menu">
               <icon-menu />
             </div>
-            <span class="name">
+            <span class="settings-view__list_list-item_name">
               {{element.name}}
             </span>
           </div>
@@ -27,8 +28,8 @@
       </template>
     </draggable>
 
-    <div class="add-city">
-      <span class="title">
+    <div class="settings-view__add-city">
+      <span class="settings-view__add-city_title">
         Add Location
       </span>
       <add-city />
@@ -39,7 +40,10 @@
 <script lang="ts">
 import { useWeatherStore } from '@/stores';
 import { computed, defineComponent } from 'vue';
-import { MenuOutlined as IconMenu, DeleteOutlined as IconDelete } from '@ant-design/icons-vue';
+import {
+  MenuOutlined as IconMenu,
+  DeleteOutlined as IconDelete,
+} from '@ant-design/icons-vue';
 import AddCity from '@/components/AddCity/AddCity.vue';
 import { MyButton } from '@/components/UI';
 import draggable from 'vuedraggable';

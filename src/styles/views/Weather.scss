@@ -1,29 +1,29 @@
-.weather-wrapper {
+.weather-view {
 	min-height: 200px;
 
-	.empty {
+	.weather-view__empty {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 
-		.title {
+		.weather-view__empty_title {
 			margin: 15% 0;
 			text-align: center;
 			font-size: 25px;
 			font-weight: bold;
 		}
 
-		.add-city {
+		.weather-view__empty_add-city {
 			display: flex;
 			justify-content: center;
 		}
 	}
 
-	.weather-list {
+	.weather-view__weather-list {
 		list-style: none;
 
-		.city {
+		.weather-view__weather-list_city {
 			margin-bottom: 30px;
 		}
 	}

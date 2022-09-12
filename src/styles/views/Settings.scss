@@ -1,18 +1,18 @@
-.settings {
-	.header {
+.settings-view {
+	.settings-view__header {
 		font-size: large;
 		font-weight: bold;
 		margin-bottom: 15px;
 	}
 
-	.list {
+	.settings-view__list {
 		list-style: none;
 
 		max-height: 300px;
 		overflow: hidden;
 		overflow-y: auto;
 
-		.list-item {
+		.settings-view__list_item {
 			margin-bottom: 5px;
 			padding: 10px;
 
@@ -22,27 +22,27 @@
 
 			box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
 
-			.left {
+			.settings-view__list_item__left {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 
-				.menu {
+				.settings-view__list_item_menu {
 					margin-right: 10px;
 					cursor: move;
 				}
 
-				.name {
+				.settings-view__list_list-item_name {
 					padding: 5px;
 				}
 			}
 		}
 	}
 
-	.add-city {
+	.settings-view__add-city {
 		margin-top: 30px;
 
-		.title {
+		.settings-view__add-city_title {
 			display: inline-block;
 			font-weight: bold;
 			margin-bottom: 10px;

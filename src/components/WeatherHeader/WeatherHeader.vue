@@ -19,7 +19,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SettingOutlined, CloseOutlined } from '@ant-design/icons-vue';
+import {
+  SettingOutlined,
+  CloseOutlined,
+} from '@ant-design/icons-vue';
 import { MyButton } from '@/components/UI';
 
 export default defineComponent({

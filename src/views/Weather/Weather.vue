@@ -1,24 +1,24 @@
 <template>
-  <div class="weather-wrapper">
+  <div class="weather-view">
     <div
       v-if="store.cities.length === 0"
-      class="empty"
+      class="weather-view__empty"
     >
-      <div class="title">
+      <div class="weather-view__empty_title">
         It looks like there's nothing here
       </div>
-      <div class="add-city">
+      <div class="weather-view__empty_add-city">
         <add-city />
       </div>
     </div>
     <ul
       v-else
-      class="weather-list"
+      class="weather-view__weather-list"
     >
       <li
         v-for="city in store.cities"
         :key="city.id"
-        class="city"
+        class="weather-view__weather-list_city"
       >
         <weather-card :city="city" />
       </li>
