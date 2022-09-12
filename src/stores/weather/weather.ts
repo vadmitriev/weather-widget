@@ -12,6 +12,7 @@ export interface WeatherState {
   cities: City[];
   isLoading: boolean;
   error: string | null;
+  errorAddCity: string | null;
   isSettingsOpen: boolean;
 }
 
@@ -25,19 +26,36 @@ export const useWeatherStore = defineStore({
     cities: savedState?.cities ?? [],
     isLoading: false,
     error: null,
+    errorAddCity: null,
     isSettingsOpen: savedState?.isSettingsOpen ?? false,
   }),
   actions: {
     setCities(cities: City[]) {
       this.cities = cities;
     },
-    addCity(city: City) {
-      const isCityExists = this.cities.find((c) => c.id === city.id);
+    pushCity(city: City) {
+      this.cities.push(city);
+    },
+    async addCity(cityName: string) {
+      const isCityExists = this.cities.find((c) => c.name.toLowerCase() === cityName.toLowerCase());
       if (isCityExists) {
-        this.error = `City ${city.name} has already been added to the list`;
+        this.error = `City ${cityName} has already been added to the list`;
         return;
       }
-      this.cities.push(city);
+      this.setIsLoading(true);
+      try {
+        const city = await this.loadDataForOneCity<'cityName'>(cityName);
+        if (city) {
+          this.pushCity(city);
+        }
+        this.resetErrorAddCity();
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          this.setErrorAddCity(e.message);
+        }
+      } finally {
+        this.setIsLoading(false);
+      }
     },
     removeCity(city: City) {
       this.cities = this.cities.filter((c) => c.id !== city.id);
@@ -51,6 +69,12 @@ export const useWeatherStore = defineStore({
     resetError() {
       this.error = null;
     },
+    setErrorAddCity(error: string | null) {
+      this.errorAddCity = error;
+    },
+    resetErrorAddCity() {
+      this.errorAddCity = null;
+    },
     setIsSettingsOpen(value: boolean) {
       this.isSettingsOpen = value;
     },
@@ -58,7 +82,7 @@ export const useWeatherStore = defineStore({
       console.log('current visible', this.isSettingsOpen);
       this.isSettingsOpen = !this.isSettingsOpen;
     },
-    async loadWeatherForOneCity<T extends 'coords' | 'cityName'>(
+    async loadDataForOneCity<T extends 'coords' | 'cityName'>(
       payload: T extends 'coords' ? Coord : string,
     ): Promise<City | undefined> {
       try {
@@ -71,24 +95,23 @@ export const useWeatherStore = defineStore({
         }
 
         if (isTypeOf<WeatherResponseError>(res.data, 'message')) {
-          this.error = res.data.message;
-          throw new Error(this.error);
+          throw new Error(res.data.message);
         }
         this.resetError();
         return fillCityData(res.data);
       } catch (e: unknown) {
         if (e instanceof AxiosError) {
-          this.error = e.response?.statusText || 'Some error occured';
-          throw new Error(this.error);
+          const errorText = e.response?.data.message || 'Some error occured';
+          throw new Error(errorText);
         }
       } finally {
         this.isLoading = false;
       }
       return undefined;
     },
-    async loadWeatherForAllCities() {
+    async loadDataForAllCities() {
       const citiesResponse = await Promise.allSettled(
-        this.cities.map(async (city) => this.loadWeatherForOneCity<'cityName'>(city.name)),
+        this.cities.map(async (city) => this.loadDataForOneCity<'cityName'>(city.name)),
       ).then((data) => data.filter(isFullfilled).map((c) => c.value));
 
       this.setCities(citiesResponse as City[]);
@@ -100,9 +123,9 @@ export const useWeatherStore = defineStore({
           lon: pos.coords.longitude,
         };
 
-        const city = await this.loadWeatherForOneCity<'coords'>(coords);
+        const city = await this.loadDataForOneCity<'coords'>(coords);
         if (city) {
-          this.addCity(city);
+          this.pushCity(city);
         }
       };
 

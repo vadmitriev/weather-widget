@@ -11,7 +11,10 @@ $backgound-color: #ECF5FF;
 	padding: 5px;
 
 	&:hover {
-		background-color: $backgound-color;
 		color: $main-color;
+	}
+
+	&.bg-hover:hover {
+		background-color: $backgound-color;
 	}
 }

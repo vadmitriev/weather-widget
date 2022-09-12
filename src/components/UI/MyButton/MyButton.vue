@@ -1,5 +1,7 @@
 <template>
-	<div class="btn">
+	<div
+		class="btn"
+		:class="{'bg-hover' : bgHover === true}">
 		<slot></slot>
 	</div>
 </template>
@@ -9,6 +11,12 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'my-button',
+  props: {
+    bgHover: {
+      type: Boolean,
+      default: true,
+    },
+  },
 });
 </script>
 

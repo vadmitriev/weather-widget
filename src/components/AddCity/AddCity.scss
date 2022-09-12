@@ -1,4 +1,14 @@
 .wrapper {
+	.error {
+		color: #F56C6C;
+		background-color: #FEF0F0;
+		margin-bottom: 10px;
+		text-align: center;
+		padding: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	.add-city {
 		display: flex;
@@ -8,6 +18,12 @@
 		input {
 			width: 100%;
 			padding: 10px;
+
+			&:focus {
+				outline: none;
+				border: 1px solid var(--main-color);
+				box-shadow: 0 0 10px #719ECE;
+			}
 		}
 	}
 }

@@ -52,7 +52,7 @@ export interface WeatherSys {
 
 export interface WeatherResponseOK {
   coord: Coord;
-  weather: WeatherData;
+  weather: WeatherData[];
   base: string;
   main: WeatherMain;
   visibility: number;

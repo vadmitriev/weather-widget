@@ -1,14 +1,20 @@
 <template>
   <div class="weather-wrapper">
-    <div v-if="store.cities.length === 0" class="empty">
+    <div
+      v-if="store.cities.length === 0"
+      class="empty"
+    >
       <div class="title">
-        Здесь ничего нет
+        Здесь пока ничего нет
       </div>
       <div class="add-city">
         <add-city />
       </div>
     </div>
-    <div v-else>
+    <div
+      v-else
+      class="weather-list"
+    >
       <ul>
         <ul v-for="city in store.cities" :key="city.id">
           <weather-card :city="city" />
@@ -35,6 +41,9 @@ const Weather = defineComponent({
     return {
       store,
     };
+  },
+  mounted() {
+    this.store.loadDataForAllCities();
   },
 });
 export default Weather;

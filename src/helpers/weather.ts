@@ -39,3 +39,35 @@ export const calcDewPoint = (
   const value = ans * (9.0 / 5.0);
   return value + 32.0;
 };
+
+export const getWindDescriptionBySpeed = (speed: number): string => {
+  // http://gyre.umeoce.maine.edu/data/gomoos/buoy/php/variable_description.php?variable=wind_2_speed
+  switch (true) {
+    case (speed < 0.5):
+      return 'Calm';
+    case (speed < 1.5):
+      return 'Light air';
+    case (speed < 3):
+      return 'Light breeze';
+    case (speed < 5):
+      return 'Gentle breeze';
+    case (speed < 8):
+      return 'Moderate breeze';
+    case (speed < 10.5):
+      return 'Fresh breeze';
+    case (speed < 13.5):
+      return 'Strong breeze';
+    case (speed < 16.5):
+      return 'Moderate gale';
+    case (speed < 20):
+      return 'Fresh gale';
+    case (speed < 23.5):
+      return 'Strong gale';
+    case (speed < 27.5):
+      return 'Whole gale';
+    case (speed < 31.5):
+      return 'Storm';
+    default:
+      return 'Hurricane';
+  }
+};
