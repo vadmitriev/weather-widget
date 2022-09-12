@@ -10,16 +10,9 @@
 **Технологии**: Vue 3, Pinia, Typescript, SCSS.
 
 ## Скриншоты
-<div style="overflow: hidden; display: inline-block">
-	<figure>
-		<img src="./screens/settings.png" alt="settings" width="200">
-		<figcaption>Settings</figcaption>
-	</figure>
-	<figure>
-		<img src="./screens/weather.png" alt="settings" width="200">
-		<figcaption>List of weather</figcaption>
-	</figure>
-</div>
+|  ![weather city list](./screens/weather.png)        | ![settings](./screens/settings.png)      |
+|----------|---------|
+| Weather City List | Settings |
 
 ## Использование
 Виджет можно разместить на своем сайте, добавив в HTML файл следующий код:
