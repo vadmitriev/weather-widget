@@ -39,7 +39,7 @@ export const useWeatherStore = defineStore({
     async addCity(cityName: string) {
       const isCityExists = this.cities.find((c) => c.name.toLowerCase() === cityName.toLowerCase());
       if (isCityExists) {
-        this.error = `City ${cityName} has already been added to the list`;
+        this.setErrorAddCity(`City ${cityName} has already been added to the list`);
         return;
       }
       this.setIsLoading(true);
@@ -79,7 +79,6 @@ export const useWeatherStore = defineStore({
       this.isSettingsOpen = value;
     },
     toggleSettings() {
-      console.log('current visible', this.isSettingsOpen);
       this.isSettingsOpen = !this.isSettingsOpen;
     },
     async loadDataForOneCity<T extends 'coords' | 'cityName'>(

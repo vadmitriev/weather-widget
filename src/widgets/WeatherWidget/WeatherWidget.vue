@@ -4,14 +4,16 @@
       <div class="header">
         <weather-header
           :showSettings="store.isSettingsOpen"
-          @click="store.toggleSettings"
-          v-show="store.cities.length > 0"
+          @click="toggleSettings"
         />
       </div>
       <settings v-if="store.isSettingsOpen" />
       <weather v-else />
       <div class="loader-wrapper">
-        <my-loader v-show="store.isLoading" :visible="store.isLoading" />
+        <my-loader
+          v-show="store.isLoading"
+          :visible="store.isLoading"
+        />
       </div>
       <div class="error-wrapper">
         <error-component
@@ -50,6 +52,13 @@ export default defineComponent({
     });
 
     return { store };
+  },
+  methods: {
+    toggleSettings() {
+      this.store.toggleSettings();
+      this.store.resetError();
+      this.store.resetErrorAddCity();
+    },
   },
 });
 </script>

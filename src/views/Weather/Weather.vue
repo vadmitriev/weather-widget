@@ -5,22 +5,24 @@
       class="empty"
     >
       <div class="title">
-        Здесь пока ничего нет
+        It looks like there's nothing here
       </div>
       <div class="add-city">
         <add-city />
       </div>
     </div>
-    <div
+    <ul
       v-else
       class="weather-list"
     >
-      <ul>
-        <ul v-for="city in store.cities" :key="city.id">
-          <weather-card :city="city" />
-        </ul>
-      </ul>
-    </div>
+      <li
+        v-for="city in store.cities"
+        :key="city.id"
+        class="city"
+      >
+        <weather-card :city="city" />
+      </li>
+    </ul>
   </div>
 </template>
 

@@ -1,20 +1,24 @@
 <template>
 	<div
 		class="btn"
-		:class="{'bg-hover' : bgHover === true}">
+		:class="{
+      small : size === 's',
+      middle: size=== 'm',
+      large: size === 'l'
+    }">
 		<slot></slot>
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
   name: 'my-button',
   props: {
-    bgHover: {
-      type: Boolean,
-      default: true,
+    size: {
+      type: String as PropType<'s' | 'm' | 'l'>,
+      default: 'm',
     },
   },
 });

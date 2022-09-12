@@ -6,15 +6,22 @@ $backgound-color: #ECF5FF;
 	background-color: transparent;
 	cursor: pointer;
 
-	font-size: 25px;
 	border-radius: 50%;
 	padding: 5px;
 
-	&:hover {
-		color: $main-color;
+	&.small {
+		font-size: 16px;
 	}
 
-	&.bg-hover:hover {
-		background-color: $backgound-color;
+	&.middle {
+		font-size: 25px;
+	}
+
+	&.big {
+		font-size: 40px;
+	}
+
+	&:hover {
+		color: $main-color;
 	}
 }

@@ -8,11 +8,10 @@
 		align-items: center;
 
 		.title {
+			margin: 15% 0;
 			text-align: center;
 			font-size: 25px;
 			font-weight: bold;
-
-			margin-bottom: 40px;
 		}
 
 		.add-city {
@@ -20,8 +19,12 @@
 			justify-content: center;
 		}
 	}
-	
+
 	.weather-list {
-		
+		list-style: none;
+
+		.city {
+			margin-bottom: 30px;
+		}
 	}
 }

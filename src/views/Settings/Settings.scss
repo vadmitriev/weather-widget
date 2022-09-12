@@ -1,5 +1,51 @@
-.settings {}
+.settings {
+	.header {
+		font-size: large;
+		font-weight: bold;
+		margin-bottom: 15px;
+	}
 
-.settings-btn {
-	cursor: pointer;
+	.list {
+		list-style: none;
+
+		max-height: 300px;
+		overflow: hidden;
+		overflow-y: auto;
+
+		.list-item {
+			margin-bottom: 5px;
+			padding: 10px;
+
+			display: flex;
+			justify-content: space-between;
+
+
+			box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+
+			.left {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.menu {
+					margin-right: 10px;
+					cursor: move;
+				}
+
+				.name {
+					padding: 5px;
+				}
+			}
+		}
+	}
+
+	.add-city {
+		margin-top: 30px;
+
+		.title {
+			display: inline-block;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+	}
 }

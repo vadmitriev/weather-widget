@@ -5,12 +5,12 @@
 		</div>
 		<div class="add-city">
 			<input
-				placeholder="Добавить город"
+				placeholder="Add Location"
 				ref="input"
         @input="handleInput"
 				@keyup.enter="handleAdd"
 			/>
-			<my-button @click="handleAdd" bgHover="false">
+			<my-button @click="handleAdd">
 				<enter-outlined />
 			</my-button>
 		</div>
