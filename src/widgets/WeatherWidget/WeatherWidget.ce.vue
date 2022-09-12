@@ -1,14 +1,14 @@
 <template>
-  <div class="weather-widget-container">
+  <div class="weather-widget">
     <my-card>
-      <div class="weather-widget-container__header">
+      <div class="weather-widget__header">
         <weather-header
           :showSettings="store.isSettingsOpen"
           @click="toggleSettings"
         />
       </div>
-      <settings v-if="store.isSettingsOpen" />
-      <weather v-else />
+      <settings v-show="store.isSettingsOpen" />
+      <weather v-show="!store.isSettingsOpen" />
       <div class="weather-widget__loader-wrapper">
         <my-loader
           v-show="store.isLoading"
