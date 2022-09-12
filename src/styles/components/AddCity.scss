@@ -1,5 +1,7 @@
-.wrapper {
-	.error {
+@import '../variables.scss';
+
+.add-city-wrapper {
+	.add-city__error {
 		color: #F56C6C;
 		background-color: #FEF0F0;
 		margin-bottom: 10px;
@@ -10,7 +12,7 @@
 		align-items: center;
 	}
 
-	.add-city {
+	.add-city__controls {
 		display: flex;
 		justify-content: center;
 		gap: 5px;
@@ -21,7 +23,7 @@
 
 			&:focus {
 				outline: none;
-				border: 1px solid var(--main-color);
+				border: 1px solid $btn-color;
 				box-shadow: 0 0 10px #719ECE;
 			}
 		}

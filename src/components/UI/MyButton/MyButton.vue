@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="btn"
+		class="my-button"
 		:class="{
       small : size === 's',
       middle: size=== 'm',
@@ -23,7 +23,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-@import './MyButton.scss';
-</style>

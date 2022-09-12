@@ -1,23 +1,23 @@
 <template>
-  <div class="city-wrapper">
-    <div class="title">
+  <div class="weather-card__city-wrapper">
+    <div class="weather-card__city_wrapper_title">
       {{city.name}}, {{ city.country}}
     </div>
-    <div class="weather">
+    <div class="weather-card__weather">
       <img :src="imgUrl" alt="weather icon">
-      <div class="deg">
+      <div class="weather-card__weather__deg">
         <strong>{{city.temperature}}&deg;C</strong>
       </div>
     </div>
 
-    <div class="description">
+    <div class="weather-card__description">
       Feels like {{city.feelsLike}}&deg;C.
-      <span class="weather-description">
+      <span class="weather-card__description_weather">
         {{city.weatherDescription}}. {{city.wind.description}}
       </span>
     </div>
 
-    <div class="params">
+    <div class="weather-card__params">
       <p>
         <span class="arrow-icon">
           <icon-arrow :style="windIconStyle" />
@@ -66,7 +66,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-@import "./WeatherCard.scss";
-</style>

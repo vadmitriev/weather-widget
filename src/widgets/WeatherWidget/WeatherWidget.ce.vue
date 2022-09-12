@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="weather-widget-container">
     <my-card>
-      <div class="header">
+      <div class="weather-widget-container__header">
         <weather-header
           :showSettings="store.isSettingsOpen"
           @click="toggleSettings"
@@ -9,13 +9,13 @@
       </div>
       <settings v-if="store.isSettingsOpen" />
       <weather v-else />
-      <div class="loader-wrapper">
+      <div class="weather-widget__loader-wrapper">
         <my-loader
           v-show="store.isLoading"
           :visible="store.isLoading"
         />
       </div>
-      <div class="error-wrapper">
+      <div class="weather-widget__error-wrapper">
         <error-component
           v-if="store.error !== null" :error="store.error ?? ''"
         />
@@ -34,6 +34,7 @@ import {
 import { useWeatherStore } from '@/stores/weather';
 import { saveToLocalStorage } from '@/helpers';
 import { LS_WEATHER_STATE } from '@/constants';
+import { MyCard, MyLoader } from '@/components/UI';
 
 export default defineComponent({
   name: 'weather-widget',
@@ -42,7 +43,8 @@ export default defineComponent({
     Settings,
     WeatherHeader,
     ErrorComponent,
-
+    MyCard,
+    MyLoader,
   },
   setup() {
     const store = useWeatherStore();
@@ -64,5 +66,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import './WeatherWidget.scss'
+@import '@/styles/index.scss';
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <div class="wrapper">
-	<div class="title">
-		Произошла ошибка
-	</div>
-	<div class="content">
-		{{ error }}
-	</div>
+  <div class="error-wrapper">
+    <div class="error-title">
+      Произошла ошибка
+    </div>
+    <div class="error-content">
+      {{ error }}
+    </div>
   </div>
 </template>
 
@@ -21,7 +21,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-@import './Error.scss'
-</style>

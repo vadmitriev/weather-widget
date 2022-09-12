@@ -121,7 +121,6 @@ export const useWeatherStore = defineStore({
           lat: pos.coords.latitude,
           lon: pos.coords.longitude,
         };
-
         const city = await this.loadDataForOneCity<'coords'>(coords);
         if (city) {
           this.pushCity(city);

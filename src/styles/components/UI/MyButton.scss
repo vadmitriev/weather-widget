@@ -1,7 +1,6 @@
-$main-color: #409EFF;
-$backgound-color: #ECF5FF;
+@import '../../variables.scss';
 
-.btn {
+.my-button {
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
@@ -22,6 +21,6 @@ $backgound-color: #ECF5FF;
 	}
 
 	&:hover {
-		color: $main-color;
+		color: $btn-color;
 	}
 }

@@ -1,14 +1,13 @@
-.city-wrapper {
+.weather-card__city-wrapper {
 	position: relative;
 
-	.title {
+	.weather-card__city_wrapper_title {
 		font-size: large;
 		font-weight: 600;
 	}
 
-	.weather {
+	.weather-card__weather {
 		display: flex;
-		justify-content: space-around;
 
 		align-items: center;
 		width: 100%;
@@ -16,17 +15,17 @@
 
 		margin-bottom: 15px;
 
-		.deg {
+		.weather-card__weather__deg {
 			padding: 20px;
-			font-size: 25px;
+			font-size: 30px;
 			font-weight: bold;
 		}
 	}
 
-	.description {
+	.weather-card__description {
 		margin-bottom: 10px;
 
-		.weather-description {
+		.weather-card__description_weather {
 			display: inline-block;
 
 			&::first-letter {
@@ -35,7 +34,7 @@
 		}
 	}
 
-	.params {
+	.weather-card__params {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr 1fr 1fr;

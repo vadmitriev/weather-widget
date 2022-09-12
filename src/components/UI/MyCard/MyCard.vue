@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="my-card">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,3 @@ export default defineComponent({
   name: 'my-card',
 });
 </script>
-
-<style scoped lang="scss">
-@import './MyCard.scss';
-</style>

@@ -1,9 +1,12 @@
 <template>
-	<div class="wrapper">
-		<div class="error" v-show="store.errorAddCity && showError">
+	<div class="add-city-wrapper">
+		<div
+      class="add-city__error"
+      v-show="store.errorAddCity && showError"
+    >
 			{{store.errorAddCity}}
 		</div>
-		<div class="add-city">
+		<div class="add-city__controls">
 			<input
 				placeholder="Add Location"
 				ref="input"
@@ -21,10 +24,11 @@
 import { defineComponent, ref } from 'vue';
 import { EnterOutlined } from '@ant-design/icons-vue';
 import { useWeatherStore } from '@/stores';
+import { MyButton } from '@/components/UI';
 
 export default defineComponent({
   name: 'add-city',
-  components: { EnterOutlined },
+  components: { EnterOutlined, MyButton },
   data() {
     return {
       inputValue: '',
@@ -57,7 +61,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-@import './AddCity.scss'
-</style>

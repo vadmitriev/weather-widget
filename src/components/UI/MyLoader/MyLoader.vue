@@ -1,9 +1,9 @@
 <template>
-  <div class="loader" v-show="visible">
-    <div class="dot" />
-    <div class="dot" />
-    <div class="dot" />
-    <div class="dot" />
+  <div class="my-loader" v-show="visible">
+    <div class="my-loader__dot" />
+    <div class="my-loader__dot" />
+    <div class="my-loader__dot" />
+    <div class="my-loader__dot" />
   </div>
 </template>
 
@@ -20,7 +20,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-@import "./MyLoader.scss";
-</style>

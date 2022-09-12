@@ -41,15 +41,17 @@ import { useWeatherStore } from '@/stores';
 import { computed, defineComponent } from 'vue';
 import { MenuOutlined as IconMenu, DeleteOutlined as IconDelete } from '@ant-design/icons-vue';
 import AddCity from '@/components/AddCity/AddCity.vue';
+import { MyButton } from '@/components/UI';
 import draggable from 'vuedraggable';
 
-const Settings = defineComponent({
+export default defineComponent({
   name: 'settings-view',
   components: {
     IconDelete,
     IconMenu,
     AddCity,
     draggable,
+    MyButton,
   },
   setup() {
     const store = useWeatherStore();
@@ -57,9 +59,4 @@ const Settings = defineComponent({
     return { store, cities: computed(() => store.cities) };
   },
 });
-export default Settings;
 </script>
-
-<style scoped lang="scss">
-@import './Settings.scss';
-</style>

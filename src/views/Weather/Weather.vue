@@ -31,7 +31,7 @@ import { useWeatherStore } from '@/stores';
 import { defineComponent } from 'vue';
 import { WeatherCard, AddCity } from '@/components';
 
-const Weather = defineComponent({
+export default defineComponent({
   name: 'weather-view',
   components: {
     WeatherCard,
@@ -45,12 +45,10 @@ const Weather = defineComponent({
     };
   },
   mounted() {
+    if (!this.store.cities.length) {
+      this.store.getLocation();
+    }
     this.store.loadDataForAllCities();
   },
 });
-export default Weather;
 </script>
-
-<style scoped lang="scss">
-@import './Weather.scss';
-</style>

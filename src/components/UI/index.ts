@@ -1,5 +1,3 @@
-import MyButton from './MyButton/MyButton.vue';
-import MyCard from './MyCard/MyCard.vue';
-import MyLoader from './MyLoader/MyLoader.vue';
-
-export default [MyButton, MyCard, MyLoader];
+export { default as MyButton } from './MyButton/MyButton.vue';
+export { default as MyCard } from './MyCard/MyCard.vue';
+export { default as MyLoader } from './MyLoader/MyLoader.vue';
