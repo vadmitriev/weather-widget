@@ -1,0 +1,25 @@
+.weatherWidget {
+	position: relative;
+
+	max-width: 300px;
+	min-width: 100px;
+
+	min-height: 100px;
+
+	padding: 10px;
+}
+
+.loaderWrapper,
+.errorWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+	isolation: isolate;
+}
+
+.loaderWrapper {
+	position: absolute;
+	top: 20%;
+	left: 40%;
+}

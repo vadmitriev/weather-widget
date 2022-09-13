@@ -1,0 +1,47 @@
+.wrapper {
+	position: relative;
+
+	.title {
+		font-size: large;
+		font-weight: 600;
+	}
+
+	.weather {
+		display: flex;
+
+		align-items: center;
+		width: 100%;
+		min-height: 30%;
+
+		margin-bottom: 15px;
+
+		.weather__deg {
+			padding: 20px;
+			font-size: 30px;
+			font-weight: bold;
+		}
+	}
+
+	.description {
+		margin-bottom: 10px;
+
+		.descriptionWeather {
+			display: inline-block;
+
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.params {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		gap: 16px;
+
+		.arrowIcon {
+			font-size: 18px;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+.wrapper {
+	min-height: 200px;
+
+	.empty {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.title {
+			margin: 15% 0;
+			text-align: center;
+			font-size: 25px;
+			font-weight: bold;
+		}
+
+		.addCity {
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	.list {
+		list-style: none;
+
+		.city {
+			margin-bottom: 30px;
+		}
+	}
+}

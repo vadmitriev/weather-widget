@@ -7,7 +7,7 @@
 - Сохранение списка городов в localStorage;
 - Определение локации
 
-**Технологии**: Vue 3, Pinia, Typescript, SCSS.
+**Технологии**: React, Recoil, Typescript, SCSS, Vite.
 
 ## Скриншоты
 |  ![weather city list](./screens/weather.png)        | ![settings](./screens/settings.png)      |
@@ -39,7 +39,7 @@ cd weather-widget
 cp env.sample .env
 ```
 
-В файле `.env` необходимо указать значение переменной `VUE_APP_WEATHER_API_KEY` как ключ к API сервиса погоды OpenWeatherMap.
+В файле `.env` необходимо указать значение переменной `REACT_APP_WEATHER_API_KEY` как ключ к API сервиса погоды OpenWeatherMap.
 
 ```console
 npm install
