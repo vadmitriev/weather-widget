@@ -46,6 +46,12 @@ export default defineComponent({
     MyCard,
     MyLoader,
   },
+  props: {
+    timeout: {
+      type: Number,
+      default: 30,
+    },
+  },
   setup() {
     const store = useWeatherStore();
 
@@ -61,6 +67,11 @@ export default defineComponent({
       this.store.resetError();
       this.store.resetErrorAddCity();
     },
+  },
+  mounted() {
+    setInterval(() => {
+      this.store.loadDataForAllCities();
+    }, this.$props.timeout * 60 * 1000);
   },
 });
 </script>

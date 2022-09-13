@@ -21,6 +21,11 @@
 <script defer="defer" src="https://vadmitriev.github.io/weather-widget/index.js"></script>
 ```
 
+Также можно указать интервал обновления погоды в минутах через свойство `timeout` (по умолчанию 30 минут):
+```HTML
+<weather-widget timeout="1" />
+```
+
 ## Установка
 ```console
 git clone https://github.com/vadmitriev/weather-widget
