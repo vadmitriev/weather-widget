@@ -1,5 +1,5 @@
 <template>
-	<div
+	<button
 		class="my-button"
 		:class="{
       small : size === 's',
@@ -7,7 +7,7 @@
       large: size === 'l'
     }">
 		<slot></slot>
-	</div>
+	</button>
 </template>
 
 <script lang="ts">
