@@ -7,8 +7,8 @@
           @click="toggleSettings"
         />
       </div>
-      <settings v-show="store.isSettingsOpen" />
-      <weather v-show="!store.isSettingsOpen" />
+      <settings-view v-show="store.isSettingsOpen" />
+      <weather-view v-show="!store.isSettingsOpen" />
       <div class="weather-widget__loader-wrapper">
         <my-loader
           v-show="store.isLoading"
@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Settings, Weather } from '@/views';
+import { SettingsView, WeatherView } from '@/views';
 
 import {
   WeatherHeader, ErrorComponent,
@@ -39,8 +39,8 @@ import { MyCard, MyLoader } from '@/components/UI';
 export default defineComponent({
   name: 'weather-widget',
   components: {
-    Weather,
-    Settings,
+    WeatherView,
+    SettingsView,
     WeatherHeader,
     ErrorComponent,
     MyCard,
