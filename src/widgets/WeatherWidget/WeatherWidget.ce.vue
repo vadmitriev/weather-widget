@@ -69,8 +69,8 @@ export default defineComponent({
     },
   },
   mounted() {
-    setInterval(() => {
-      this.store.loadDataForAllCities();
+    setInterval(async () => {
+      await this.store.loadDataForAllCities();
     }, this.$props.timeout * 60 * 1000);
   },
 });
