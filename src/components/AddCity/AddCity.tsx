@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './AddCity.module.scss';
 import { EnterOutlined } from '@ant-design/icons';
-import MyButton from '../UI/MyButton/MyButton';
-import useWeatherStore from '../../stores/weather/weather';
+import MyButton from '@/components/UI/MyButton/MyButton';
+import useWeatherStore from '@/stores/weather/weather';
 
 interface AddCityProps {}
 

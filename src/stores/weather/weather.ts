@@ -1,8 +1,8 @@
-import { getFromLocalStorage, isFullfilled, isTypeOf } from '../../helpers';
-import { WeatherService } from '../../api';
+import { getFromLocalStorage, isFullfilled, isTypeOf } from '@/helpers';
+import { WeatherService } from '@/api';
 import { AxiosError, AxiosResponse } from 'axios';
-import { LS_WEATHER_STATE } from '../../constants';
-import { City, WeatherResponseError, Coord } from '../../interfaces';
+import { LS_WEATHER_STATE } from '@/constants';
+import { City, WeatherResponseError, Coord } from '@/interfaces';
 import { fillCityData } from './helpers';
 import create from 'zustand';
 import { persist } from 'zustand/middleware';

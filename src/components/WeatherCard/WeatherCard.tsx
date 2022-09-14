@@ -1,12 +1,10 @@
 import React from 'react';
-import { City } from '../../interfaces';
+import { City } from '@/interfaces';
 import styles from './WeatherCard.module.scss';
 import {
   DashboardOutlined as IconPressure,
-  // SendOutlined as IconArrow,
+  SendOutlined as IconArrow,
 } from '@ant-design/icons';
-
-import IconArrow from '../../assets/icons/IconArrow.svg';
 
 interface WeatherCatdProps {
   city: City;
@@ -38,8 +36,7 @@ const WeatherCatd: React.FC<WeatherCatdProps> = ({ city }) => {
       <div className={styles.params}>
         <p>
           <span className={styles.arrowIcon}>
-            <img src={IconArrow} style={windIconStyle} />
-            {/* <IconArrow style={windIconStyle} /> */}
+            <IconArrow style={windIconStyle} />
           </span>
           {city.wind.speed} m/s {city.wind.direction}
         </p>

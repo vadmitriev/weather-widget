@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { AddCity, WeatherCard } from '../../components';
-import { City } from '../../interfaces';
-import useWeatherStore from '../../stores/weather/weather';
+import { AddCity, WeatherCard } from '@/components';
+import { City } from '@/interfaces';
+import useWeatherStore from '@/stores/weather/weather';
 import styles from './Weather.module.scss';
 
 interface WeatherViewProps {}

@@ -2,8 +2,8 @@ import {
   calcDewPoint,
   calcWindDirection,
   getWindDescriptionBySpeed,
-} from '../../helpers';
-import { WeatherResponseOK, City } from '../../interfaces';
+} from '@/helpers';
+import { WeatherResponseOK, City } from '@/interfaces';
 
 export const fillCityData = (res: WeatherResponseOK): City => ({
   id: res.sys.id,

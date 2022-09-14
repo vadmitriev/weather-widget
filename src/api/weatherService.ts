@@ -1,4 +1,4 @@
-import { WeatherResponse, Coord } from '../interfaces';
+import { WeatherResponse, Coord } from '@/interfaces';
 import { AxiosResponse } from 'axios';
 import api from './http';
 

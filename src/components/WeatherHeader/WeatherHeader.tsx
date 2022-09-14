@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyButton } from '../UI';
+import { MyButton } from '@/components/UI';
 import styles from './WeatherHeader.module.scss';
 import { SettingOutlined, CloseOutlined } from '@ant-design/icons';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';

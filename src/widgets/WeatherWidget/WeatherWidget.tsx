@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { WeatherHeader } from '../../components';
-import { MyCard, MyLoader } from '../../components/UI';
-import useWeatherStore from '../../stores/weather/weather';
-import SettingsView from '../../views/Settings/Settings';
-import WeatherView from '../../views/Weather/Weather';
+import { WeatherHeader } from '@/components';
+import { MyCard, MyLoader } from '@/components/UI';
+import useWeatherStore from '@/stores/weather/weather';
+import SettingsView from '@/views/Settings/Settings';
+import WeatherView from '@/views/Weather/Weather';
 import styles from './WeatherWidget.module.scss';
 
 interface WeatherWidgetProps {

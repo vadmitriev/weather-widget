@@ -1,14 +1,14 @@
 import React from 'react';
-import { City } from '../../interfaces';
+import { City } from '@/interfaces';
 import styles from './Settings.module.scss';
 import { ReactSortable } from 'react-sortablejs';
 import {
   MenuOutlined as IconMenu,
   DeleteOutlined as IconDelete,
 } from '@ant-design/icons';
-import { MyButton } from '../../components/UI';
-import { AddCity } from '../../components';
-import useWeatherStore from '../../stores/weather/weather';
+import { MyButton } from '@/components/UI';
+import { AddCity } from '@/components';
+import useWeatherStore from '@/stores/weather/weather';
 
 interface SettingsViewProps {}
 
