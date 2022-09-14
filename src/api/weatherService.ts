@@ -1,12 +1,14 @@
-import { WeatherResponse, Coord } from '@/interfaces';
+import { WeatherResponse, Coord } from '../interfaces';
 import { AxiosResponse } from 'axios';
 import api from './http';
 
-const appId = process.env.REACT_APP_WEATHER_API_KEY;
+const appId = import.meta.env.REACT_APP_WEATHER_API_KEY;
 const units = 'metric';
 
 export default class WeatherService {
-  static async getWeatherByCoords(coord: Coord): Promise<AxiosResponse<WeatherResponse>> {
+  static async getWeatherByCoords(
+    coord: Coord,
+  ): Promise<AxiosResponse<WeatherResponse>> {
     return api.get('/weather', {
       params: {
         lat: coord.lat,
@@ -17,7 +19,9 @@ export default class WeatherService {
     });
   }
 
-  static async getWeatherByCityName(city: string): Promise<AxiosResponse<WeatherResponse>> {
+  static async getWeatherByCityName(
+    city: string,
+  ): Promise<AxiosResponse<WeatherResponse>> {
     return api.get('/weather', {
       params: {
         q: city,

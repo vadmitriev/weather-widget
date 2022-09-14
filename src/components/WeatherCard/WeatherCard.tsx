@@ -1,6 +1,6 @@
 import React from 'react';
 import { City } from '../../interfaces';
-import styles from './WeatherCatd.module.scss';
+import styles from './WeatherCard.module.scss';
 import {
   DashboardOutlined as IconPressure,
   SendOutlined as IconArrow,
@@ -11,7 +11,7 @@ interface WeatherCatdProps {
 }
 
 const WeatherCatd: React.FC<WeatherCatdProps> = ({ city }) => {
-  const imgUrl = `${process.env.REACT_APP_IMAGE_URL}/${city.icon}@2x.png`;
+  const imgUrl = `${import.meta.env.REACT_APP_IMAGE_URL}/${city.icon}@2x.png`;
   const windIconStyle = { transform: 'rotate(${city.wind.deg + 180}deg);' };
 
   return (

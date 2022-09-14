@@ -1,6 +1,6 @@
 import React from 'react';
 import { City } from '../../interfaces';
-import styles from './SettingsView.module.scss';
+import styles from './Settings.module.scss';
 import { ReactSortable } from 'react-sortablejs';
 import {
   MenuOutlined as IconMenu,
@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import { MyButton } from '../../components/UI';
 import { AddCity } from '../../components';
+import useWeatherStore from '../../stores/weather/weather';
 
 interface SettingsViewProps {}
 

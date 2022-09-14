@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styles from './AddCity.module.scss';
 import { EnterOutlined } from '@ant-design/icons';
 import MyButton from '../UI/MyButton/MyButton';
+import useWeatherStore from '../../stores/weather/weather';
 
 interface AddCityProps {}
 
@@ -24,11 +25,15 @@ const AddCity: React.FC<AddCityProps> = () => {
     setInputValue(e.target.value);
   };
 
+  const handleAdd = () => {
+    store.addCity(inputValue);
+    setShowError(false);
+    setInputValue('');
+  };
+
   const handleKeyUp = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      await store.addCity();
-      setShowError(false);
-      setInputValue('');
+      handleAdd();
     }
   };
 
@@ -45,6 +50,9 @@ const AddCity: React.FC<AddCityProps> = () => {
           onKeyUp={handleKeyUp}
           value={inputValue}
         />
+        <MyButton onClick={handleAdd}>
+          <EnterOutlined />
+        </MyButton>
       </div>
     </div>
   );
