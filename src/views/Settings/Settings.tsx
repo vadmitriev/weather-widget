@@ -34,7 +34,7 @@ const SettingsView: React.FC<SettingsViewProps> = () => {
         className={styles.list}
       >
         {store.cities.map((el: City) => (
-          <li className={styles.item} key={el.id}>
+          <li key={el.id} className={styles.item}>
             <div className={styles.left}>
               <div className={styles.menu}>
                 <IconMenu />
@@ -43,7 +43,7 @@ const SettingsView: React.FC<SettingsViewProps> = () => {
             </div>
 
             <MyButton size="s" onClick={() => handleClick(el)}>
-              <IconDelete />
+              <IconDelete onClick={() => handleClick(el)} />
             </MyButton>
           </li>
         ))}

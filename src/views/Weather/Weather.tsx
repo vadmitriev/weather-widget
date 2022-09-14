@@ -29,7 +29,7 @@ const WeatherView: React.FC<WeatherViewProps> = () => {
         <ul className={styles.list}>
           {store.cities.map((el: City) => (
             <li key={el.id} className={styles.city}>
-              <WeatherCard city={el} />
+              <WeatherCard key={el.id} city={el} />
             </li>
           ))}
         </ul>

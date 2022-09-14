@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { City } from '@/interfaces';
 import styles from './WeatherCard.module.scss';
 import {
@@ -11,8 +11,18 @@ interface WeatherCatdProps {
 }
 
 const WeatherCatd: React.FC<WeatherCatdProps> = ({ city }) => {
+  const arrowIconRef = useRef<HTMLSpanElement | null>(null);
+
   const imgUrl = `${import.meta.env.VITE_IMAGE_URL}/${city.icon}@2x.png`;
-  const windIconStyle = { transform: 'rotate(${city.wind.deg + 180}deg);' };
+  const windIconStyle = `transform: rotate(${city.wind.deg + 180}deg)`;
+
+  useEffect(() => {
+    if (arrowIconRef.current) {
+      arrowIconRef.current
+        .querySelector('svg')!
+        .setAttribute('style', windIconStyle);
+    }
+  }, [arrowIconRef.current]);
 
   return (
     <div className={styles.wrapper}>
@@ -36,7 +46,7 @@ const WeatherCatd: React.FC<WeatherCatdProps> = ({ city }) => {
       <div className={styles.params}>
         <p>
           <span className={styles.arrowIcon}>
-            <IconArrow style={windIconStyle} />
+            <IconArrow ref={arrowIconRef} />
           </span>
           {city.wind.speed} m/s {city.wind.direction}
         </p>
