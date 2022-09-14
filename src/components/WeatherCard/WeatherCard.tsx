@@ -3,15 +3,17 @@ import { City } from '../../interfaces';
 import styles from './WeatherCard.module.scss';
 import {
   DashboardOutlined as IconPressure,
-  SendOutlined as IconArrow,
+  // SendOutlined as IconArrow,
 } from '@ant-design/icons';
+
+import IconArrow from '../../assets/icons/IconArrow.svg';
 
 interface WeatherCatdProps {
   city: City;
 }
 
 const WeatherCatd: React.FC<WeatherCatdProps> = ({ city }) => {
-  const imgUrl = `${import.meta.env.REACT_APP_IMAGE_URL}/${city.icon}@2x.png`;
+  const imgUrl = `${import.meta.env.VITE_IMAGE_URL}/${city.icon}@2x.png`;
   const windIconStyle = { transform: 'rotate(${city.wind.deg + 180}deg);' };
 
   return (
@@ -36,7 +38,8 @@ const WeatherCatd: React.FC<WeatherCatdProps> = ({ city }) => {
       <div className={styles.params}>
         <p>
           <span className={styles.arrowIcon}>
-            <IconArrow style={windIconStyle} />
+            <img src={IconArrow} style={windIconStyle} />
+            {/* <IconArrow style={windIconStyle} /> */}
           </span>
           {city.wind.speed} m/s {city.wind.direction}
         </p>

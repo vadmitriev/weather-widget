@@ -15,18 +15,19 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({ timeout = 30 }) => {
 
   useEffect(() => {
     setInterval(async () => {
-      await store.loadDataForAllCities();
+      store.loadDataForAllCities();
     }, timeout * 60 * 1000);
   }, []);
 
   const handleClick = () => {
+    console.log('click header');
     store.toggleSettings();
     store.resetError();
     store.resetErrorAddCity();
   };
 
   return (
-    <div className={styles.WeatherWidget}>
+    <div className={styles.weatherWidget}>
       <MyCard>
         <div className={styles.widgetHeader}>
           <WeatherHeader
@@ -34,8 +35,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({ timeout = 30 }) => {
             onClick={handleClick}
           />
         </div>
-        {store.isSettingsOpen && <SettingsView />}
-        {store.isSettingsOpen && <WeatherView />}
+        {store.isSettingsOpen ? <SettingsView /> : <WeatherView />}
         <div className={styles.loaderWrapper}>
           <MyLoader visible={store.isLoading} />
         </div>

@@ -36,7 +36,7 @@ const SettingsView: React.FC<SettingsViewProps> = () => {
         {store.cities.map((el: City) => (
           <li className={styles.item} key={el.id}>
             <div className={styles.left}>
-              <div className={styles.left}>
+              <div className={styles.menu}>
                 <IconMenu />
               </div>
               <span className={styles.name}>{el.name}</span>

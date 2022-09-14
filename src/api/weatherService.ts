@@ -2,7 +2,7 @@ import { WeatherResponse, Coord } from '../interfaces';
 import { AxiosResponse } from 'axios';
 import api from './http';
 
-const appId = import.meta.env.REACT_APP_WEATHER_API_KEY;
+const appId = import.meta.env.VITE_WEATHER_API_KEY;
 const units = 'metric';
 
 export default class WeatherService {

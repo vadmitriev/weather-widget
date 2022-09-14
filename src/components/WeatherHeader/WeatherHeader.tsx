@@ -9,16 +9,19 @@ interface WeatherHeaderProps
   showSettings: boolean;
 }
 
-const WeatherHeader: React.FC<WeatherHeaderProps> = ({ showSettings }) => {
+const WeatherHeader: React.FC<WeatherHeaderProps> = ({
+  showSettings,
+  ...props
+}) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} {...props}>
       {showSettings ? (
         <MyButton>
-          <SettingOutlined />
+          <CloseOutlined />
         </MyButton>
       ) : (
         <MyButton>
-          <CloseOutlined />
+          <SettingOutlined />
         </MyButton>
       )}
     </div>

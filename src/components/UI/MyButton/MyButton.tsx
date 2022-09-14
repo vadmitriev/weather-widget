@@ -16,9 +16,9 @@ const MyButton: React.FC<MyButtonProps> = ({ children, size = 'm' }) => {
   return (
     <button
       className={cn(styles.btn, {
-        small: size === 's',
-        middle: size === 'm',
-        large: size === 'l',
+        [styles.small]: size === 's',
+        [styles.middle]: size === 'm',
+        [styles.large]: size === 'l',
       })}
     >
       {children}
