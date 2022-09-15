@@ -7,7 +7,7 @@
 - Сохранение списка городов в localStorage;
 - Определение локации
 
-**Технологии**: React, Recoil, Typescript, SCSS, Vite.
+**Технологии**: React, Zustand, Typescript, SCSS, Vite.
 
 ## Скриншоты
 |  ![weather city list](./screens/weather.png)        | ![settings](./screens/settings.png)      |
