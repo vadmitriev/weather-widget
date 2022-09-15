@@ -54,7 +54,7 @@ export default defineComponent({
   },
   data() {
     return {
-      intervalFn: NaN,
+      intervalId: NaN,
     };
   },
   setup() {
@@ -74,12 +74,12 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.intervalFn = setInterval(async () => {
+    this.intervalId = setInterval(async () => {
       await this.store.loadDataForAllCities();
     }, this.$props.timeout * 60 * 1000);
   },
   beforeUnmount() {
-    clearInterval(this.intervalFn);
+    clearInterval(this.intervalId);
   },
 });
 </script>
