@@ -52,6 +52,11 @@ export default defineComponent({
       default: 30,
     },
   },
+  data() {
+    return {
+      intervalFn: NaN,
+    };
+  },
   setup() {
     const store = useWeatherStore();
 
@@ -69,9 +74,12 @@ export default defineComponent({
     },
   },
   mounted() {
-    setInterval(async () => {
+    this.intervalFn = setInterval(async () => {
       await this.store.loadDataForAllCities();
     }, this.$props.timeout * 60 * 1000);
+  },
+  beforeUnmount() {
+    clearInterval(this.intervalFn);
   },
 });
 </script>
