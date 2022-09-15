@@ -20,7 +20,7 @@
     <div class="weather-card__params">
       <p>
         <span class="arrow-icon">
-          <icon-arrow :style="windIconStyle" />
+          <icon-arrow ref="arrow" />
         </span>
         {{city.wind.speed}} m/s {{city.wind.direction}}
       </p>
@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { City } from '@/interfaces';
 import {
   DashboardOutlined as IconPressure,
@@ -54,12 +54,22 @@ export default defineComponent({
   components: { IconPressure, IconArrow },
   data() {
     const imgUrl = `${process.env.VUE_APP_IMAGE_URL}/${this.city.icon}@2x.png`;
-    const windIconStyle = `transform: rotate(${this.city.wind.deg + 180}deg);`;
 
     return {
       imgUrl,
-      windIconStyle,
     };
+  },
+  setup() {
+    const arrow = ref(null);
+    return { arrow };
+  },
+  mounted() {
+    const windIconStyle = `transform: rotate(${this.city.wind.deg + 180}deg);`;
+
+    const svgArrow = (this.$refs.arrow as HTMLSpanElement).querySelector('svg');
+    if (svgArrow) {
+      svgArrow.setAttribute('style', windIconStyle);
+    }
   },
   props: {
     city: {
